@@ -170,19 +170,21 @@ appears on the left side of the page.
     */
 
 #menu .pure-menu-heading {
-   display: flex;
+    text-align: center
 }
 
 .pure-img-logo-menu {
+    vertical-align: middle;
     border-radius: 50%;
-    margin-right: 7px;
+    margin: 5px;
 }
 
 #menu .pure-menu-heading .pure-person {
+    display: inline-block;
     font-size: 100%;
     font-weight: bold;
     color: #fff;
-    margin-top: calc(33px / 2);
+    margin: 5px;
 }
 
 
