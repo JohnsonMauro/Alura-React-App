@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import InputCustom from './components/InputCustom.js';
 import SubmitButton from './components/SubmitButton.js';
+import axios from 'axios';
 
 class FormAuthor extends Component {
   constructor(){
@@ -68,9 +69,9 @@ class TableAuthor extends Component {
             {
               this.props.lista.map((autor) => {
                 return(
-                  <tr key={autor.id}>
-                    <td>{autor.nome}</td>
-                    <td>{autor.email}</td>
+                  <tr key={autor._id}>
+                    <td>{autor.name}</td>
+                    <td>{autor.author}</td>
                   </tr>
                 );
               })
@@ -90,10 +91,13 @@ export default class AuthorBox extends Component{
   }
 
   componentDidMount(){
-    $.ajax({
-      url:"http://cdc-react.herokuapp.com/api/autores",
-      dataType: 'json',
-      success: (resposta) => this.setState({lista:resposta})
+    axios.get("http://localhost:3001/books")
+    .then((response) => {
+      console.log(response);
+      return this.setState({lista:response});
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
